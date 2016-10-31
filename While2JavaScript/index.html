@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>While2JavaScript</title>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <style media="screen">
+  html,
+  body {
+    overflow-x: hidden; /* Prevent scroll on narrow devices */
+  }
+  body {
+    padding-top: 70px;
+  }
+  footer {
+    padding: 30px 0;
+  }
+
+  /*
+  * Off Canvas
+  * --------------------------------------------------
+  */
+  @media screen and (max-width: 767px) {
+    .row-offcanvas {
+      position: relative;
+      -webkit-transition: all .25s ease-out;
+      -o-transition: all .25s ease-out;
+      transition: all .25s ease-out;
+    }
+
+    .row-offcanvas-right {
+      right: 0;
+    }
+
+    .row-offcanvas-left {
+      left: 0;
+    }
+
+    .row-offcanvas-right
+    .sidebar-offcanvas {
+      right: -50%; /* 6 columns */
+    }
+
+    .row-offcanvas-left
+    .sidebar-offcanvas {
+      left: -50%; /* 6 columns */
+    }
+
+    .row-offcanvas-right.active {
+      right: 50%; /* 6 columns */
+    }
+
+    .row-offcanvas-left.active {
+      left: 50%; /* 6 columns */
+    }
+
+    .sidebar-offcanvas {
+      position: absolute;
+      top: 0;
+      width: 50%; /* 6 columns */
+    }
+  }
+
+
+  </style>
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="./css/basic.css" media="screen" title="no title" charset="utf-8">
+
+</head>
+<body>
+  <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">While2JavaScript</a>
+      </div>
+      <a href="https://github.com/qfdk/While2JavaScript"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/e7bbb0521b397edbd5fe43e7f760759336b5e05f/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_green_007200.png"></a>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="navbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Documentation</a></li>
+
+        </ul>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>While2JavaScript</h1>
+      <p> A simple way to translate <b>While</b> file to <b>JavaScript</b>.</p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row row-offcanvas row-offcanvas-right">
+      <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar">
+        <div class="pined">
+          <div class="list-group">
+            <a class="list-group-item active">Documentation</a>
+            <a href="#toc_0" class="list-group-item">Introduction</a>
+            <a href="#toc_2" class="list-group-item">Getting started</a>
+            <a href="#toc_3" class="list-group-item">Machine cible</a>
+            <a href="#toc_4" class="list-group-item">Sémantique opérationnelle</a>
+            <a href="#toc_5" class="list-group-item">Expressions</a>
+            <a href="#toc_6" class="list-group-item">Commandes</a>
+          </div>
+          <div class="list-group">
+            <a class="list-group-item active">Link</a>
+            <a href="http://qfdk.me" class="list-group-item">@qfdk</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-9">
+        <p class="pull-right visible-xs">
+          <button type="button" class="btn btn-info btn-xs" data-toggle="offcanvas">Menu</button>
+        </p>
+        <div class="jumbotron">
+          <img src="https://esir.univ-rennes1.fr/sites/esir.univ-rennes1.fr/themes/esir/logo.png" alt="" />
+          <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/42/Université_Rennes_1_%28logo%29.svg/320px-Université_Rennes_1_%28logo%29.svg.png" alt="" />
+          <p></p>
+        </div>
+        <div class="row">
+          <div class="col-xs-12"><!-- debuit-->
+            <h2 id="toc_0">Documentation compilateur While</h2>
+
+<h3 id="toc_1">Introduction</h3>
+<p class="md_block">
+    <span class="md_line">Ce projet a pour objectif de compiler un programme écrit avec le langage While en un programme JavaScript. Nous travaillons en mode agile,les différents sprints ont une durée de une à deux semaines. A chaque fin de sprint,nous fournissons un délivrable pour construire le compilateur. Voici les membres de notre groupe :</span>
+</p>
+<p class="md_block">
+    <span class="md_line">Bastien Cloarec<br /></span>
+    <span class="md_line">Haozhi Li<br /></span>
+    <span class="md_line">Youssouf Maiga<br /></span>
+    <span class="md_line">Salifou Nguetcheu<br /></span>
+    <span class="md_line">Baptiste Buron</span>
+</p>
+
+<h3 id="toc_2">Getting start</h3>
+<p class="md_block">
+    <span class="md_line">Nous avons créé un dépôt git pour avoir une bonne gestion du projet</span>
+</p>
+
+<pre><code>git clone http://qfdk.github.io/While2JavaScript &amp;&amp; cd While2JavaScript &amp;&amp; make</code></pre>
+
+<h2 id="toc_3">Machine cible</h2>
+
+<h3 id="toc_4">Sémantique opérationnelle</h3>
+<p class="md_block">
+    <span class="md_line">Le langage ciblé étant le JavaScript, la gestion (statique, pile, tas) n&#39;est pas de notre responsabilité.<br /></span>
+    <span class="md_line">Lorsqu&#39;on utilise JavaScript, la mémoire est allouée lors de la création des objets puis libérée « automatiquement » lorsque ceux-ci ne sont plus utilisés. Cette libération automatique est appelée garbage collection en anglais ou ramasse-miettes. Le fait que ce processus soit automatique est souvent source de confusion et donne parfois l&#39;impression que JavaScript (ou d&#39;autres langages de haut niveau) ne permet pas de gérer la mémoire : nous allons voir que ce n&#39;est pas le cas.<br /></span>
+    <span class="md_line">En 2012, l&#39;ensemble des navigateurs web modernes disposent d&#39;un ramasse-miettes implémentant cet algorithme mark-and-sweep. L&#39;ensemble des améliorations apportées dans ce domaine de JavaScript représentent des améliorations basées sur cet algorithme, ce ne sont pas de nouveaux algorithmes ou une nouvelle définition pour les objets à supprimer.</span>
+</p>
+
+<h2 id="toc_5">Style de machine cible</h2>
+
+<h3 id="toc_6">Délivrables</h3>
+
+<ol>
+<li>Pretty Printer</li>
+<li>Table des symboles</li>
+<li>Code 3@</li>
+<li>La bibliotheque du JavaScript</li>
+</ol>
+
+<h2 id="toc_7">Spécification : Traduction de while en javascript</h2>
+<p class="md_block">
+    <span class="md_line">Pas d&#39;erreur à la l&#39;exécution implique que toutes les variables doivent être initialisés. Nous nous arrangeons à ce qu&#39;il n&#39;y ait pas d&#39;erreur à l’exécution.</span>
+</p>
+
+<h3 id="toc_8">Variable non initialisé :</h3>
+<p class="md_block">
+    <span class="md_line">La valeur par défaut en while est nil ===&gt; undefined<br /></span>
+    <span class="md_line">undefined en javascript signifie variable non initialisé alors que null  est utilipsé par le programme pour dire. En faisant seulement var nil, sans initialisation, sa valeur est underfined</span>
+</p>
+<div class="codehilite "><pre>    <span class="kd">var</span> <span class="nx">nil</span><span class="p">;</span>
+</pre></div>
+
+<h3 id="toc_9">1. nop</h3>
+<p class="md_block">
+    <span class="md_line">Le rôle des commande est de modifier l&#39;état de la mémoire.<br /></span>
+    <span class="md_line">La commande nop ne fait rien. On la traduit par l&#39;instruction 0+0 par exemple;</span>
+</p>
+<div class="codehilite "><pre>   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">()</span>
+</pre></div>
+
+<h3 id="toc_10">2. Commande c1;c2:</h3>
+<p class="md_block">
+    <span class="md_line">Nous devons exécuter C1 puis C2. La traduction en JavaScript donnera:   </span>
+</p>
+<div class="codehilite "><pre>    <span class="nx">traduction</span> <span class="p">(</span><span class="nx">C1</span><span class="p">)</span>
+    <span class="nx">traduction</span> <span class="p">(</span><span class="nx">C2</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="toc_11">3. if E then C1 else C2 fi</h3>
+<p class="md_block">
+    <span class="md_line">Sa traduction donne :</span>
+</p>
+<div class="codehilite "><pre><span class="k">if</span>  <span class="p">(</span><span class="nx">traduction</span><span class="p">(</span><span class="nx">E</span><span class="p">)</span><span class="o">!=</span><span class="nx">nil</span><span class="p">)</span>
+     <span class="nx">traduction</span><span class="p">(</span><span class="nx">C1</span><span class="p">)</span>
+<span class="k">else</span>
+      <span class="nx">traduction</span> <span class="p">(</span><span class="nx">C2</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="toc_12">4.if E then C1 fi</h3>
+<p class="md_block">
+    <span class="md_line">Sa traduction donne :</span>
+</p>
+<div class="codehilite "><pre><span class="k">if</span>  <span class="p">(</span><span class="nx">traduction</span><span class="p">(</span><span class="nx">E</span><span class="p">)</span><span class="o">!=</span> <span class="nx">nil</span><span class="p">)</span>
+     <span class="nx">traduction</span><span class="p">(</span><span class="nx">C1</span><span class="p">)</span>
+</pre></div>
+
+<h3 id="toc_13">5. while E do C od</h3>
+<p class="md_block">
+    <span class="md_line">Sa traduction donne :</span>
+</p>
+<div class="codehilite "><pre><span class="k">while</span> <span class="p">(</span><span class="nx">E</span><span class="o">!=</span> <span class="nx">nil</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">traduction</span><span class="p">(</span><span class="nx">C</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="toc_14">6. for E do C od</h3>
+<p class="md_block">
+    <span class="md_line">Sa traduction donne :</span>
+</p>
+<div class="codehilite "><pre><span class="kr">int</span> <span class="nx">cpt0</span> <span class="o">=</span> <span class="nx">LibWh2JS</span><span class="p">.</span><span class="nx">countRight</span><span class="p">(</span><span class="nx">E</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i0</span> <span class="o">&lt;</span> <span class="nx">cpt0</span><span class="p">;</span> <span class="nx">i0</span><span class="o">++</span><span class="p">){</span>
+    <span class="nx">traduction</span><span class="p">(</span><span class="nx">C</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="toc_15">7. foreach X in E do C od</h3>
+<div class="codehilite "><pre><span class="kd">function</span> <span class="nx">function_foreach</span> <span class="p">(</span><span class="nx">X</span><span class="p">,</span><span class="nx">E</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">X</span><span class="o">=</span><span class="nx">value</span><span class="p">(</span><span class="nx">E</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">tl</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span><span class="o">!=</span><span class="nx">nil</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">function_foreach</span><span class="p">(</span><span class="nx">X</span><span class="p">,</span><span class="nx">tl</span><span class="p">(</span><span class="nx">X</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">hd</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span><span class="o">!=</span><span class="nx">nil</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nx">function_foreach</span><span class="p">(</span><span class="nx">X</span><span class="p">,</span><span class="nx">hd</span><span class="p">(</span><span class="nx">X</span><span class="p">))</span>
+    <span class="p">}</span>
+    <span class="k">if</span><span class="p">((</span><span class="nx">tl</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span><span class="o">==</span><span class="nx">nil</span><span class="p">)</span><span class="o">&amp;&amp;</span><span class="p">(</span><span class="nx">hd</span><span class="p">(</span><span class="nx">X</span><span class="p">)</span><span class="o">==</span><span class="nx">nil</span><span class="p">))</span>
+    <span class="p">{</span>
+        <span class="nx">traduction</span><span class="p">(</span><span class="nx">X</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="toc_16">8. V1,...,Vn = E1,...En</h3>
+<p class="md_block">
+    <span class="md_line">Les Vi et les Ei designeront les traductions des noms de variable données par la table des variables.</span>
+</p>
+<div class="codehilite "><pre><span class="kd">var</span> <span class="nx">tampon</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">();</span>
+<span class="k">for</span> <span class="p">(</span><span class="kr">int</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;=</span><span class="nx">n</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">tampon</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">Ei</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="k">for</span><span class="p">(</span><span class="kr">int</span> <span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;=</span><span class="nx">n</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">Vi</span> <span class="o">=</span> <span class="nx">tampon</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="toc_17">9.V1,...,Vm := f(E1,...,En)</h3>
+<p class="md_block">
+    <span class="md_line">Les Vi et les Ei designeront les traductions des noms de variable données par la table des variables.</span>
+</p>
+<div class="codehilite "><pre><span class="kd">var</span> <span class="nx">tampon</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Array</span><span class="p">();</span> <span class="c1">// Pour stocker les write de f</span>
+<span class="nx">executer</span><span class="p">(</span><span class="nx">f</span><span class="p">,</span><span class="nx">n</span><span class="p">,</span><span class="nx">tampon</span><span class="p">)</span> <span class="c1">// Execution de la fonction f ayant n parametres</span>
+<span class="k">for</span><span class="p">(</span><span class="kr">int</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">i</span><span class="o">&lt;</span><span class="nx">m</span><span class="p">;</span><span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="nx">Vi</span><span class="o">+</span><span class="mi">1</span> <span class="o">=</span> <span class="nx">tampon</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3 id="toc_18">10. for X do X := E od</h3>
+<p class="md_block">
+    <span class="md_line">X désignera la traduction du nom de variable X comme le définit la table des variables.</span>
+</p>
+<div class="codehilite "><pre><span class="nx">X</span><span class="s1">&#39;=LibWh2JS.clone(X);</span>
+<span class="s1">feuilleHd=LibWh.getFeuilleHd(X);</span>
+<span class="s1">hd(feuilleHd)= new Tree(X&#39;</span><span class="p">);</span>
+</pre></div>
+
+<h3 id="toc_19">11. X := (cons a b)</h3>
+<div class="codehilite "><pre> <span class="c1">// Un construction que nous allons définir</span>
+<span class="nx">X</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BinTree</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span><span class="nx">b</span><span class="p">)</span>
+</pre></div>
+
+<h2 id="toc_20">Code 3@ - Machine</h2>
+
+<h3 id="toc_21">nop</h3>
+
+<pre><code>    &lt;nop,_,_,_&gt;</code></pre>
+
+<h3 id="toc_22">C1;C2</h3>
+
+<pre><code>    &lt;C1,_,_,_&gt;
+    &lt;C2,_,_,_&gt;</code></pre>
+
+<h3 id="toc_23">X := (cons a b)</h3>
+
+<pre><code>    &lt;cons,X,a,b&gt;</code></pre>
+
+<h3 id="toc_24">X := (list a b)</h3>
+
+<pre><code>    &lt;list,X,a,b&gt;</code></pre>
+
+<h3 id="toc_25">X := (tl Y)</h3>
+
+<pre><code>    &lt;tl,X,Y,_&gt;</code></pre>
+
+<h3 id="toc_26">X := (hd Y)</h3>
+
+<pre><code>    &lt;hd,X,Y,_&gt;</code></pre>
+
+<h3 id="toc_27">if E then C fi</h3>
+
+<pre><code>    &lt;if C,_,E,_&gt;</code></pre>
+
+<h3 id="toc_28">if E then C1 else C2 fi</h3>
+
+<pre><code>    &lt;if C1 C2,_,E,_&gt;</code></pre>
+
+<h3 id="toc_29">While E do C od</h3>
+
+<pre><code>    &lt;while C,_,E,_&gt;</code></pre>
+
+<h3 id="toc_30">for E do C od</h3>
+
+<pre><code>    &lt;for C,_,E,_&gt;</code></pre>
+
+<h3 id="toc_31">foreach X in E do C od</h3>
+
+<pre><code>    &lt;foreach C,X,E,_&gt;</code></pre>
+
+<h3 id="toc_32">R -&gt; E and E&#39;</h3>
+
+<pre><code>    &lt;and,R,E,E'&gt;</code></pre>
+
+<h3 id="toc_33">R -&gt; E or E&#39;</h3>
+
+<pre><code>    &lt;or,R,E,E'&gt;</code></pre>
+
+<h3 id="toc_34">R -&gt; not E</h3>
+
+<pre><code>    &lt;not,R,E,_&gt;</code></pre>
+
+<h3 id="toc_35">R -&gt; E =? E&#39;</h3>
+
+<pre><code>    &lt;=?,R,E,E'&gt;</code></pre>
+
+<h2 id="toc_36">La biblioteque du JavaScript</h2>
+
+<h3 id="toc_37">TreeBinaire</h3>
+<div class="codehilite "><pre><span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+<span class="kd">var</span>  <span class="nx">nil</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">data</span> <span class="o">=</span> <span class="nx">data</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">left</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="nx">right</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nx">Node</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getData</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">data</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">//arbre binaire</span>
+<span class="kd">function</span> <span class="nx">Tree</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="nx">dataL</span><span class="p">,</span><span class="nx">dataR</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">insert</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="nx">dataL</span><span class="p">,</span><span class="nx">dataR</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// insert le data</span>
+<span class="c1">//1. test si on a le racine</span>
+<span class="c1">//2. test la valeur &lt; this, 3 sinon 4</span>
+<span class="c1">//3.</span>
+<span class="c1">//4.</span>
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">insert</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="nx">dataL</span><span class="p">,</span><span class="nx">dataR</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">root</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Node</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="kc">null</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">left</span> <span class="o">=</span> <span class="nx">dataL</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">right</span> <span class="o">=</span> <span class="nx">dataR</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getRight</span><span class="o">=</span><span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getLeft</span><span class="o">=</span><span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">left</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">getRoot</span><span class="o">=</span><span class="kd">function</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">root</span><span class="p">;</span>
+<span class="p">};</span>
+<span class="c1">// nombre de node totale</span>
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">countNode</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">node</span><span class="p">)</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">countNode</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">left</span><span class="p">)</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="nx">countNode</span><span class="p">(</span><span class="nx">node</span><span class="p">.</span><span class="nx">right</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Tree</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">countRight</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">tmp</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">cpt</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">while</span> <span class="p">((</span><span class="nx">tmp</span> <span class="o">!=</span> <span class="nx">nil</span><span class="p">)</span>  <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">tmp</span><span class="p">.</span><span class="nx">root</span> <span class="o">!=</span> <span class="nx">nil</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">cpt</span><span class="o">++</span><span class="p">;</span>
+        <span class="nx">tmp</span><span class="o">=</span><span class="nx">tmp</span><span class="p">.</span><span class="nx">root</span><span class="p">.</span><span class="nx">right</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">cpt</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// reuperer une valeur de inputX</span>
+<span class="kd">function</span> <span class="nx">getValeur</span><span class="p">(</span><span class="nx">v</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">rest</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;input&quot;</span><span class="p">)[</span><span class="nx">v</span><span class="p">];</span>
+    <span class="k">return</span> <span class="nx">rest</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nx">t</span><span class="o">=</span><span class="k">new</span> <span class="nx">Tree</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">t1</span><span class="o">=</span><span class="k">new</span> <span class="nx">Tree</span><span class="p">(</span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="nx">nil</span><span class="p">,</span><span class="k">new</span> <span class="nx">Tree</span><span class="p">(</span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="nx">nil</span><span class="p">,</span><span class="k">new</span> <span class="nx">Tree</span><span class="p">(</span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="nx">nil</span><span class="p">,</span><span class="k">new</span> <span class="nx">Tree</span><span class="p">(</span><span class="s2">&quot;nil&quot;</span><span class="p">,</span><span class="nx">nil</span><span class="p">,</span><span class="nx">nil</span><span class="p">))));</span>
+<span class="c1">// t.insert(1,2,new Tree(3,5,new Tree(3,5,4)));</span>
+
+<span class="c1">// console.log(t.getRight().getRight().getRight().getRight());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">t1</span><span class="p">.</span><span class="nx">countRight</span><span class="p">());</span>
+</pre></div>
+          </div><!-- fin col -->
+        </div>
+        <hr>
+        <footer>
+          <div class="alert alert-info">(C) 2015-2016 by ESIR.</div>
+        </footer>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+      <script src="jquery.pin.js" charset="utf-8"></script>
+      <script>
+      $(document).ready(function () {
+        $('.list-group-item').click(function(){
+          $('.row-offcanvas').toggleClass('active');
+        });
+        $('[data-toggle="offcanvas"]').click(function () {
+          $('.row-offcanvas').toggleClass('active');
+        });
+      });
+      $('.pined').pin({
+        containerSelector: ".container",
+        minWidth: 940,
+        padding: {top: 70, bottom: 10}
+      });
+      </script>
+    </body>
+    </html>
